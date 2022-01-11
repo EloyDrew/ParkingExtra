@@ -21,7 +21,7 @@ class FrontScreen extends Component {
 
                     {/* Title */}
                     <div class="header">
-                        <h3 class="display-5">Fuel + Mileage Tracker</h3>
+                        <h3 class="display-5">Parking Manager</h3>
                     </div>
 
 
@@ -29,21 +29,21 @@ class FrontScreen extends Component {
                     {/* RecordFuel Button */}
                     <div>
                         <Button theme="RecordButton" onClick={this.props.recordFuelToggle}>
-                            Record Fuel
+                            Placeholder
                         </Button>
                     </div>
 
                     {/* RecordMileage Button */}
                     <div>
                         <Button theme="RecordButton" onClick={this.props.recordMileageToggle}>
-                            Record Mileage
+                            Placeholder
                         </Button>
                     </div>
 
                     {/* ShowResults Button */}
                     <div>
                         <Button theme="ResultsButton" onClick={this.props.resultsScreenToggle}>
-                            View Results
+                            Placeholder
                         </Button>
                     </div>
                 </div>
