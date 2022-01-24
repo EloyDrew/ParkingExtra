@@ -1,58 +1,59 @@
 import React, { Component } from 'react';
 import FrontScreen from './FrontScreen';
-import RecordFuel from './RecordFuel';
-import RecordMileage from './RecordMileage';
-import ResultsScreen from './ResultsScreen';
+import UploadMap from './UploadMap';
+import RecordMileage from './EditMap';
+import ViewMaps from './ViewMaps';
+import EditMap from './EditMap';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showRecordFuel: false,
+      showUploadMap: false,
       showFrontScreen: true,
-      showRecordMileage: false,
-      showResultsScreen: false
+      showEditMap: false,
+      showViewMaps: false
     }
-    this.recordFuelToggle = this.recordFuelToggle.bind(this);
+    this.uploadMapToggle = this.uploadMapToggle.bind(this);
     this.frontScreenToggle = this.frontScreenToggle.bind(this);
-    this.recordMileageToggle = this.recordMileageToggle.bind(this);
-    this.resultsScreenToggle = this.resultsScreenToggle.bind(this);
+    this.editMapToggle = this.editMapToggle.bind(this);
+    this.viewMapsToggle = this.viewMapsToggle.bind(this);
   }
 
   frontScreenToggle() {
     this.setState(
       {
         showFrontScreen: true,
-        showRecordFuel: false,
-        showRecordMileage: false,
-        showResultsScreen: false
+        showUploadMap: false,
+        showEditMap: false,
+        showViewMaps: false
       });
   }
-  recordFuelToggle() {
+  uploadMapToggle() {
     this.setState(
       {
         showFrontScreen: false,
-        showRecordFuel: true,
-        showRecordMileage: false,
-        showResultsScreen: false
+        showUploadMap: true,
+        showEditMap: false,
+        showViewMaps: false
       });
   }
-  recordMileageToggle() {
+  editMapToggle() {
     this.setState(
       {
         showFrontScreen: false,
-        showRecordFuel: false,
-        showRecordMileage: true,
-        showResultsScreen: false
+        showUploadMap: false,
+        showEditMap: true,
+        showViewMaps: false
       });
   }
-  resultsScreenToggle() {
+  viewMapsToggle() {
     this.setState(
       {
         showFrontScreen: false,
-        showRecordFuel: false,
-        showRecordMileage: false,
-        showResultsScreen: true
+        showUploadMap: false,
+        showEditMap: false,
+        showViewMaps: true
       });
   }
 
@@ -65,28 +66,28 @@ class App extends Component {
         {
           this.state.showFrontScreen ?
             <FrontScreen
-              recordFuelToggle={this.recordFuelToggle}
-              recordMileageToggle={this.recordMileageToggle}
-              resultsScreenToggle={this.resultsScreenToggle}
+              uploadMapToggle={this.uploadMapToggle}
+              editMapToggle={this.editMapToggle}
+              viewMapsToggle={this.viewMapsToggle}
             /> : null
         }
 
         {/* Renders FuelScreen */}
         {
-          this.state.showRecordFuel ? <RecordFuel
+          this.state.showUploadMap ? <UploadMap
             frontScreenToggle={this.frontScreenToggle}
           /> : null
         }
 
-        {/* Renders MileageScreen */}
+        {/* Renders EditMap */}
         {
-          this.state.showRecordMileage ? <RecordMileage
+          this.state.showEditMap ? <EditMap
             frontScreenToggle={this.frontScreenToggle} /> : null
         }
 
-        {/* Renders ResultsScreen */}
+        {/* Renders ViewMapsScreen */}
         {
-          this.state.showResultsScreen ? <ResultsScreen
+          this.state.showViewMaps ? <ViewMaps
             frontScreenToggle={this.frontScreenToggle} /> : null
         }
 

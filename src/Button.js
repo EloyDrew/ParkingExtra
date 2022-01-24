@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 
 const theme = {
-    RecordButton: {
+    BlueButton: {
         default: '#31CACF', //Light-Blue
         hover: '#D5D5D5'    //Light-Grey
     },
-    ResultsButton: {
+    OrangeButton: {
         default: '#F26627', //Orange
         hover: '#EF3D59'    //Red
     },

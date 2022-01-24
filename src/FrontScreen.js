@@ -28,22 +28,22 @@ class FrontScreen extends Component {
                     <br /><br /><br /><br /><br />
                     {/* RecordFuel Button */}
                     <div>
-                        <Button theme="RecordButton" onClick={this.props.recordFuelToggle}>
-                            Placeholder
+                        <Button theme="BlueButton" onClick={this.props.uploadMapToggle}>
+                            Upload + Add Map
                         </Button>
                     </div>
 
                     {/* RecordMileage Button */}
                     <div>
-                        <Button theme="RecordButton" onClick={this.props.recordMileageToggle}>
-                            Placeholder
+                        <Button theme="BlueButton" onClick={this.props.editMapToggle}>
+                            Edit Map
                         </Button>
                     </div>
 
-                    {/* ShowResults Button */}
+                    {/* ViewMaps Button */}
                     <div>
-                        <Button theme="ResultsButton" onClick={this.props.resultsScreenToggle}>
-                            Placeholder
+                        <Button theme="OrangeButton" onClick={this.props.viewMapsToggle}>
+                            View Maps
                         </Button>
                     </div>
                 </div>
