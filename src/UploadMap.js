@@ -10,9 +10,7 @@ class UploadMap extends Component {
   }
 
   render() {
-
     return (
-
       <div class="card">
 
         {/* Display Background */}

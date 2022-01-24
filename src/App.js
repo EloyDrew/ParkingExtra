@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FrontScreen from './FrontScreen';
 import UploadMap from './UploadMap';
-import RecordMileage from './EditMap';
 import ViewMaps from './ViewMaps';
 import EditMap from './EditMap';
 

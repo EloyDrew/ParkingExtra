@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './Button';
 import image from "./background.png";
+//import MouseDrawing from './MouseDrawing';
 
 class EditMap extends Component {
   constructor(props) {
@@ -8,7 +9,6 @@ class EditMap extends Component {
     this.state = {
     }
   }
-
 
   render() {
     return (
@@ -45,6 +45,10 @@ class EditMap extends Component {
               <option value="map4">Map 4</option>
             </select>
           </div>
+
+          {/* <MouseDrawing> */}
+
+
         </div>
       </div>
     );

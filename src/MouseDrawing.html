@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang"en">
+
+<head>
+    <meta charset="UFT-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content"width=device-width, initial-scale=1.0">
+    <script src="/js/konva.js"></script>
+    <title>Mouse Click Drawing</title>
+</head>
+
+<body>
+    <div id="konva-holder"></div>
+    <script>
+        const log = console.log;
+
+        //Stage Canvas
+        const stage = new Konva.Stage({
+            height: 500,
+            width: 500,
+            container: "konva-holder",
+        });
+
+        //Add One Layer
+        const layer = new Konva.layer();
+        stage.add(layer);
+
+        let rect = null;
+        let isNowDrawing = false;
+
+        stage.on("mousedown", mousedownHandler);
+        stage.on("mousemove", mousemoveHandler);
+        stage.on("mouseup", mouseupHandler);
+
+        function mousedownHandler() {
+            isNowDrawing = true;
+            rect = new Konva.rect({
+                x: stage.getPointerPosition().x,
+                y: stage.getPointerPosition().y,
+                width: 20,
+                height: 20,
+                fill: "lightblue",
+                stroke: "blue",
+            });
+            layer.add(rect).batchDraw();
+        }
+
+        function mousemoveHandler() {
+            //
+        }
+
+        function mouseupHandler() {
+            //
+        }
+    </script>
+</body>
+
+</html>
