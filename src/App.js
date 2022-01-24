@@ -71,7 +71,7 @@ class App extends Component {
             /> : null
         }
 
-        {/* Renders FuelScreen */}
+        {/* Renders Upload Map Screen */}
         {
           this.state.showUploadMap ? <UploadMap
             frontScreenToggle={this.frontScreenToggle}

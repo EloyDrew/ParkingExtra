@@ -48,6 +48,25 @@ class EditMap extends Component {
 
           {/* <MouseDrawing> */}
 
+          <Button theme="BackButton" onClick={null}>
+              Undo
+            </Button>
+            
+            <Button theme="BackButton" onClick={null}>
+              Redo
+            </Button>
+
+            <Button theme="BackButton" onClick={null}>
+              Circle
+            </Button>
+
+            <Button theme="BackButton" onClick={null}>
+              Square
+            </Button>
+
+            <Button theme="BackButton" onClick={null}>
+              Colour
+            </Button>
 
         </div>
       </div>
