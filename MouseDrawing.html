@@ -5,7 +5,7 @@
     <meta charset="UFT-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content"width=device-width, initial-scale=1.0">
-    <script src="/js/konva.js"></script>
+    <script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
     <title>Mouse Click Drawing</title>
 </head>
 
@@ -22,7 +22,7 @@
         });
 
         //Add One Layer
-        const layer = new Konva.layer();
+        const layer = new Konva.Layer();
         stage.add(layer);
 
         let rect = null;
@@ -34,7 +34,7 @@
 
         function mousedownHandler() {
             isNowDrawing = true;
-            rect = new Konva.rect({
+            rect = new Konva.Rect({
                 x: stage.getPointerPosition().x,
                 y: stage.getPointerPosition().y,
                 width: 20,
