@@ -37,21 +37,27 @@
             rect = new Konva.Rect({
                 x: stage.getPointerPosition().x,
                 y: stage.getPointerPosition().y,
-                width: 20,
-                height: 20,
+                width: 0,
+                height: 0,
                 fill: "lightblue",
                 stroke: "blue",
             });
             layer.add(rect).batchDraw();
         }
 
-        function mousemoveHandler() {
-            //
+        function mouseupHandler() {
+            isNowDrawing = false;
         }
 
-        function mouseupHandler() {
-            //
+        function mousemoveHandler() {
+
+            if (!isNowDrawing) return false;
+            const newWidth = stage.getPointerPosition().x - rect.x();
+            const newHeight = stage.getPointerPosition().y - rect.y();
+            rect.width(newWidth).height(newHeight);
+            layer.batchDraw();
         }
+
     </script>
 </body>
 
