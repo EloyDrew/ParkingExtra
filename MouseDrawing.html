@@ -25,7 +25,8 @@
         const layer = new Konva.Layer();
         stage.add(layer);
 
-        let rect = null;
+        let circle = null;
+        //let rect = null;
         let isNowDrawing = false;
 
         stage.on("mousedown", mousedownHandler);
@@ -34,15 +35,21 @@
 
         function mousedownHandler() {
             isNowDrawing = true;
-            rect = new Konva.Rect({
+            //rect = new Konva.Rect({
+            circle = new Konva.Circle({
                 x: stage.getPointerPosition().x,
                 y: stage.getPointerPosition().y,
-                width: 0,
-                height: 0,
+                //Squares
+                //width: 0,
+                //height: 0,
+
+                //Circle
+                radius: 20,
                 fill: "lightblue",
                 stroke: "blue",
             });
-            layer.add(rect).batchDraw();
+            //layer.add(rect).batchDraw();
+            layer.add(circle).batchDraw();
         }
 
         function mouseupHandler() {
@@ -52,9 +59,17 @@
         function mousemoveHandler() {
 
             if (!isNowDrawing) return false;
-            const newWidth = stage.getPointerPosition().x - rect.x();
-            const newHeight = stage.getPointerPosition().y - rect.y();
-            rect.width(newWidth).height(newHeight);
+            //Circle
+            const rise = Math.pow(stage.getPointerPosition().y - circle.y(), 2);
+            const run = Math.pow(stage.getPointerPosition().x - circle.x(), 2);
+            const newRadius = Math.sqrt(rise + run);
+            circle.radius(newRadius);
+            
+            //Square
+            //const newWidth = stage.getPointerPosition().x - rect.x();
+            //const newHeight = stage.getPointerPosition().y - rect.y();
+            //rect.width(newWidth).height(newHeight);
+            
             layer.batchDraw();
         }
 
