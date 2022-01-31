@@ -10,6 +10,27 @@
 </head>
 
 <body>
+    <nav class="nav-main">
+
+        <div class="btn-toggle-nav"></div>
+        <ul>
+            <li><a href='#'>Shape</a></li>
+            <li><a href='#'>Fill Colour</a></li>
+            <li><a href='#'>Stroke Colour</a></li>
+            <li><a href='#'>Upload Image</a></li>
+            <li><a href='#'>Save</a></li>
+        </ul>
+    </nav>
+
+
+    <input type="file" id="image_input" accept="image/png, image/jpg">
+
+    <div id="display_image"></div>
+
+    <script src="Input.js"></script>
+
+    
+
     <div id="konva-holder"></div>
     <script>
         const log = console.log;
@@ -47,6 +68,7 @@
                 radius: 20,
                 fill: "lightblue",
                 stroke: "blue",
+                draggable: true,
             });
             //layer.add(rect).batchDraw();
             layer.add(circle).batchDraw();
@@ -64,12 +86,12 @@
             const run = Math.pow(stage.getPointerPosition().x - circle.x(), 2);
             const newRadius = Math.sqrt(rise + run);
             circle.radius(newRadius);
-            
+
             //Square
             //const newWidth = stage.getPointerPosition().x - rect.x();
             //const newHeight = stage.getPointerPosition().y - rect.y();
             //rect.width(newWidth).height(newHeight);
-            
+
             layer.batchDraw();
         }
 
