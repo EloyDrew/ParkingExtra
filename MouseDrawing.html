@@ -2,25 +2,36 @@
 <html lang"en">
 
 <head>
-    <meta charset="UFT-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content"width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
-    <title>Mouse Click Drawing</title>
+    <link rel="stylesheet" href="resetstyle.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav class="nav-main">
-
-        <div class="btn-toggle-nav"></div>
+        <div class="btn-toggle-nav" onclick="toggleNav()"> </div>
         <ul>
+            <li><a href='#'>Placeholder</a></li>
+            <li><a href='#'>Placeholder</a></li>
+            <li><a href='#'>Placeholder</a></li>
+            <li><a href='#'>Placeholder</a></li>
+            <li><a href='#'>Placeholder</a></li>
+        </ul>
+    </nav>
+
+    <aside class="nav-sidebar">
+        <ul>
+            <li><span>Projects</span></li>
             <li><a href='#'>Shape</a></li>
             <li><a href='#'>Fill Colour</a></li>
             <li><a href='#'>Stroke Colour</a></li>
             <li><a href='#'>Upload Image</a></li>
             <li><a href='#'>Save</a></li>
         </ul>
-    </nav>
+    </aside>
 
 
     <input type="file" id="image_input" accept="image/png, image/jpg">
@@ -29,7 +40,7 @@
 
     <script src="Input.js"></script>
 
-    
+
 
     <div id="konva-holder"></div>
     <script>
@@ -96,6 +107,10 @@
         }
 
     </script>
+
 </body>
+<script src="Sidebar.js">
+
+</script>
 
 </html>
