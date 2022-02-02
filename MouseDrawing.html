@@ -24,11 +24,12 @@
 
     <aside class="nav-sidebar">
         <ul>
-            <li><span>Projects</span></li>
-            <li><a href='#'>Shape</a></li>
-            <li><a href='#'>Fill Colour</a></li>
-            <li><a href='#'>Stroke Colour</a></li>
-            <li><a href='#'>Upload Image</a></li>
+            <li><span>Shape Information</span></li>
+            <li><a href='#'>Shape Type:</a></li>
+            <li><a href='#'>Fill Colour:</a></li>
+            <li><a href='#'>Stroke Colour:</a></li>
+            <li><a href='#'>X/Y/Rotation</a></li>
+            <li><a href='#'>GPS Anchor</a></li>
             <li><a href='#'>Save</a></li>
         </ul>
     </aside>
@@ -67,13 +68,13 @@
 
         function mousedownHandler() {
             isNowDrawing = true;
-            //rect = new Konva.Rect({
-            circle = new Konva.Circle({
+            rect = new Konva.Rect({
+            //circle = new Konva.Circle({
                 x: stage.getPointerPosition().x,
                 y: stage.getPointerPosition().y,
                 //Squares
-                //width: 0,
-                //height: 0,
+                width: 20,
+                height: 50,
 
                 //Circle
                 radius: 20,
@@ -81,8 +82,8 @@
                 stroke: "blue",
                 draggable: true,
             });
-            //layer.add(rect).batchDraw();
-            layer.add(circle).batchDraw();
+            layer.add(rect).batchDraw();
+            //layer.add(circle).batchDraw();
         }
 
         function mouseupHandler() {
@@ -93,15 +94,15 @@
 
             if (!isNowDrawing) return false;
             //Circle
-            const rise = Math.pow(stage.getPointerPosition().y - circle.y(), 2);
-            const run = Math.pow(stage.getPointerPosition().x - circle.x(), 2);
-            const newRadius = Math.sqrt(rise + run);
-            circle.radius(newRadius);
+            //const rise = Math.pow(stage.getPointerPosition().y - circle.y(), 2);
+            //const run = Math.pow(stage.getPointerPosition().x - circle.x(), 2);
+            //const newRadius = Math.sqrt(rise + run);
+            //circle.radius(newRadius);
 
             //Square
-            //const newWidth = stage.getPointerPosition().x - rect.x();
-            //const newHeight = stage.getPointerPosition().y - rect.y();
-            //rect.width(newWidth).height(newHeight);
+            const newWidth = stage.getPointerPosition().x - rect.x();
+            const newHeight = stage.getPointerPosition().y - rect.y();
+            rect.width(newWidth).height(newHeight);
 
             layer.batchDraw();
         }
