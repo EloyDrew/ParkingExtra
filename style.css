@@ -9,15 +9,11 @@ body{
 }
 
 #display_image{
-    width: 900px;
-    height: 880px;
+    height: 900px;
+    width: 880px;
     border: 1px solid black;
     background-position: center;
     background-size: cover;
-}
-
-#konva-holder{
-    border: 1px solid black;
 }
 
 .nav-main{
