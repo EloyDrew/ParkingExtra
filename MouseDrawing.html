@@ -43,8 +43,16 @@
 
 
     <div id="konva-holder"></div>
+
+        <!-- snapping  -->
+    
+    <div id="container"></div> 
     <script>
         const log = console.log;
+        //alignment code
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var GUIDELINE_OFFSET = 5;
 
         //Stage Canvas
         const stage = new Konva.Stage({
@@ -79,7 +87,13 @@
                 radius: 20,
                 fill: "lightblue",
                 stroke: "blue",
+<<<<<<< Updated upstream
                 draggable: true,
+=======
+                //checking to ensure draggable works
+                draggable: true,
+               
+>>>>>>> Stashed changes
             });
             //layer.add(rect).batchDraw();
             layer.add(circle).batchDraw();
@@ -105,6 +119,7 @@
 
             layer.batchDraw();
         }
+       
 
     </script>
 
