@@ -16,11 +16,11 @@
     <nav class="nav-main">
         <div class="btn-toggle-nav" onclick="toggleNav()"> </div>
         <ul>
-            <li><a href='#'>Placeholder</a></li>
-            <li><a href='#'>Placeholder</a></li>
-            <li><a href='#'>Placeholder</a></li>
-            <li><a href='#'>Placeholder</a></li>
-            <li><a href='#'>Placeholder</a></li>
+            <li><a href='#'>Home</a></li>
+            <li><a href='#'>Create New Map</a></li>
+            <li><a href='#'>View Existing Maps</a></li>
+            <li><a href='#'>Templates</a></li>
+            <li><a href='#'>Help/FAQ</a></li>
         </ul>
     </nav>
 
@@ -28,17 +28,45 @@
     <aside class="nav-sidebar">
         <ul>
             <li><span>Shape Information</span></li>
+            <li><a href='#'>Enable Shape Drawing:</a></li>
+            <!-- Drawing Toggle (Add if statement, !isdrawing False when toggled off) -->
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
             <li><a href='#'>Shape Type:</a></li>
-            <li><a href='#'>Fill Colour:</a></li>
-            <li><a href='#'>Stroke Colour:</a></li>
-            <li><a href='#'>X/Y/Rotation</a></li>
-            <li><a href='#'>GPS Anchor</a></li>
-            <li><a href='#'>Save</a></li>
+
+                <!-- ONLY ONE ENABLED AT A TIME 
+                    <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                    <label> RECTANGLE </label> <br>
+
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                        <label> CIRCLE </label> <br> -->
+
+                        <li><a href='#'>Fill Colour:</a></li>
+                        <input type="color" value="#ff0000">
+
+                        <li><a href='#'>Stroke Colour:</a></li>
+                        <input type="color" value="#ff0000">
+
+                        <li><a href='#'>X/Y/Rotation</a></li>
+                        <input type="number" id="xRot" name="xRotation" min="-360" max="360">
+                        <input type="number" id="yRot" name="yRotation" min="-360" max="360">
+
+                        <li><a href='#'>GPS Anchor</a></li>
+                        <input type="number" id="anchor1" name="GPSAnchor1" min="0" max="1920">
+                        <input type="number" id="anchor2" name="GPSAnchor2" min="0" max="1080">
+
+                        <li><a href='#'>Save</a></li>
         </ul>
     </aside>
 
     <!-- File Input + Upload System -->
-    <input type="file" id="image_input" accept="image/png, image/jpg">
+    <input type="file" id="image_input" accept="image/png, image/jpeg">
     <div id="display_image"></div>
     <script src="Input.js"></script>
 
@@ -72,25 +100,27 @@
         stage.on("mouseup", mouseupHandler);
 
         function mousedownHandler() {
-            isNowDrawing = true;
-            rect = new Konva.Rect({
-                x: stage.getPointerPosition().x,
-                y: stage.getPointerPosition().y,
-                //Squares
-                width: 20,
-                height: 50,
-                //rotation: Math.random() * 360,
-                name: 'object',
-                fill: "lightblue",
-                stroke: "blue",
-                draggable: true,
+            if (drawingClicked = true) {
+                isNowDrawing = true;
+                rect = new Konva.Rect({
+                    x: stage.getPointerPosition().x,
+                    y: stage.getPointerPosition().y,
+                    //Squares
+                    width: 20,
+                    height: 50,
+                    //rotation: Math.random() * 360,
+                    name: 'object',
+                    fill: "transparent",
+                    stroke: "blue",
+                    draggable: true,
 
-                //-- Circle --
-                //radius: 20,
-                //circle = new Konva.Circle({
-            });
-            layer.add(rect).batchDraw();
-            //layer.add(circle).batchDraw();
+                    //-- Circle --
+                    //radius: 20,
+                    //circle = new Konva.Circle({
+                });
+                layer.add(rect).batchDraw();
+                //layer.add(circle).batchDraw();
+            }
         }
 
         function mouseupHandler() {
