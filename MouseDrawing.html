@@ -91,6 +91,29 @@
         const layer = new Konva.Layer();
         stage.add(layer);
 
+
+      // Dotted Line
+      var blueLine = new Konva.Line({
+          // X & Y Coords for line
+        points: [0, 0, 710, 0, 710, 540, 390, 540, 390, 580],
+        stroke: 'blue',
+        strokeWidth: 8,
+        lineCap: 'round',
+        lineJoin: 'round',
+        
+        //line of 29px, Gap of 20px, Dot of 0.001px, Gap of 20px
+        dash: [29, 20, 0.001, 20],
+      });
+
+      //Line Location On Canvas X & Y
+      blueLine.move({
+        x: 10,
+        y: 180,
+      });
+
+      layer.add(blueLine);
+
+      
         //let circle = null;
         let rect = null;
         let isNowDrawing = false;
