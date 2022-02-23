@@ -15,7 +15,6 @@ let toggleNav = function () {
         for (let i = 0; i < arrayLength; i++) {
             getSidebarLinks[i].style.opacity = "1";
         }
-
         toggleNavStatus = true;
     }
 
@@ -29,7 +28,6 @@ let toggleNav = function () {
         }
 
         getSidebarUl.style.visibilty = "hidden";
-
         toggleNavStatus = false;
     }
 }

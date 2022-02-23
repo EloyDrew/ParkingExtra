@@ -8,11 +8,10 @@
     <script src="https://unpkg.com/konva@8.3.2/konva.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Parking Drawing</title>
-
 </head>
 
 <body>
-    <!-- Header Buttons -->
+    <!----- Header Buttons ----->
     <nav class="nav-main">
         <div class="btn-toggle-nav" onclick="toggleNav()"> </div>
         <ul>
@@ -23,8 +22,9 @@
             <li><a href='#'>Help/FAQ</a></li>
         </ul>
     </nav>
+    <!-- -------------------------------------------------------------------------------- -->
 
-    <!-- Toggleable Side Bar  -->
+    <!----- Toggleable Side Bar  ----->
     <aside class="nav-sidebar">
         <ul>
             <li><span>Shape Information</span></li>
@@ -36,42 +36,47 @@
             </label>
             <li><a href='#'>Shape Type:</a></li>
 
-                <!-- ONLY ONE ENABLED AT A TIME 
-                    <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                    <label> RECTANGLE </label> <br>
+            <!-- ONLY ONE ENABLED AT A TIME 
+            <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+            <label> RECTANGLE </label> <br>
 
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                        <label> CIRCLE </label> <br> -->
+            <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+            <label> CIRCLE </label> <br> -->
 
-                        <li><a href='#'>Fill Colour:</a></li>
-                        <input type="color" value="#ff0000">
+            <li><a href='#'>Fill Colour:</a></li>
+            <!-- Set up Track and Update -->
+            <input type="color" value="#ff0000">
 
-                        <li><a href='#'>Stroke Colour:</a></li>
-                        <input type="color" value="#ff0000">
+            <li><a href='#'>Stroke Colour:</a>
+                <!-- Set up Track and Update -->
+                <input type="color" value="#ff0000">
+            </li>
 
-                        <li><a href='#'>X/Y/Rotation</a></li>
-                        <input type="number" id="xRot" name="xRotation" min="-360" max="360">
-                        <input type="number" id="yRot" name="yRotation" min="-360" max="360">
+            <li><a href='#'>Rotation</a></li>
+            <input type="number" placeholder="0-360" id="Rot" name="Rotation" min="0" max="360">
 
-                        <li><a href='#'>GPS Anchor</a></li>
-                        <input type="number" id="anchor1" name="GPSAnchor1" min="0" max="1920">
-                        <input type="number" id="anchor2" name="GPSAnchor2" min="0" max="1080">
+            <li><a href='#'>GPS Anchor</a></li>
+            <!-- Set Up Track and Update Per Shape -->
+            <input type="number" placeholder="X Coord" id="anchor1" name="GPSAnchor1" min="0" max="1920">
+            <input type="number" placeholder="Y Coord" id="anchor2" name="GPSAnchor2" min="0" max="1080">
 
-                        <li><a href='#'>Save</a></li>
+            <li><a href='#'>Save</a></li>
         </ul>
     </aside>
+    <!-- --------------------------------------------------------------------------------- -->
 
-    <!-- File Input + Upload System -->
+    <!----- File Input + Upload System ----->
     <input type="file" id="image_input" accept="image/png, image/jpeg">
     <div id="display_image"></div>
     <script src="Input.js"></script>
 
+    <!-- -------------------------------------------------------------------------------- -->
 
-    <!-- Konva Rendering -->
+    <!----- Konva Rendering ----->
     <div id="konva-holder"></div>
     <script>
         const log = console.log;
@@ -92,28 +97,26 @@
         stage.add(layer);
 
 
-      // Dotted Line
-      var blueLine = new Konva.Line({
-          // X & Y Coords for line
-        points: [0, 0, 710, 0, 710, 540, 390, 540, 390, 580],
-        stroke: 'blue',
-        strokeWidth: 8,
-        lineCap: 'round',
-        lineJoin: 'round',
-        
-        //line of 29px, Gap of 20px, Dot of 0.001px, Gap of 20px
-        dash: [29, 20, 0.001, 20],
-      });
+        // Dotted Line
+        var blueLine = new Konva.Line({
+            // X & Y Coords for line
+            points: [0, 0, 710, 0, 710, 540, 390, 540, 390, 580],
+            stroke: 'blue',
+            strokeWidth: 8,
+            lineCap: 'round',
+            lineJoin: 'round',
 
-      //Line Location On Canvas X & Y
-      blueLine.move({
-        x: 10,
-        y: 180,
-      });
+            //line of 29px, Gap of 20px, Dot of 0.001px, Gap of 20px
+            dash: [29, 20, 0.001, 20],
+        });
 
-      layer.add(blueLine);
+        //Line Location On Canvas X & Y
+        blueLine.move({
+            x: 10,
+            y: 180,
+        });
+        layer.add(blueLine);
 
-      
         //let circle = null;
         let rect = null;
         let isNowDrawing = false;
@@ -128,16 +131,17 @@
                 rect = new Konva.Rect({
                     x: stage.getPointerPosition().x,
                     y: stage.getPointerPosition().y,
-                    //Squares
+
+                    //-- Squares --
                     width: 20,
                     height: 50,
-                    //rotation: Math.random() * 360,
+                    rotation: 0,
                     name: 'object',
                     fill: "transparent",
                     stroke: "blue",
                     draggable: true,
 
-                    //-- Circle --
+                    //-- Circles --
                     //radius: 20,
                     //circle = new Konva.Circle({
                 });
@@ -166,7 +170,6 @@
             layer.batchDraw();
         }
 
-
         function getLineGuideStops(skipShape) {
             // Snap To Stage Borders & Centre
             var vertical = [0, stage.width() / 2, stage.width()];
@@ -188,9 +191,6 @@
             };
         }
 
-        // what points of the object will trigger to snapping?
-        // it can be just center of the object
-        // but we will enable all edges and center
         function getObjectSnappingEdges(node) {
             var box = node.getClientRect();
             var absPos = node.absolutePosition();
@@ -232,7 +232,9 @@
                 ],
             };
         }
+        // -- ---------------------------------------------------------------------------- --
 
+        //----- Node Snapping ----->
         // Find All Snapping Possibilities
         function getGuides(lineGuideStops, itemBounds) {
             var resultV = [];
@@ -396,6 +398,7 @@
         });
 
     </script>
+    <!-- -------------------------------------------------------------------------------- -->
 
 </body>
 <script src="Sidebar.js">
